@@ -5,10 +5,16 @@ import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import PopUp from '@/components/popUp';
 import { sendPreRegistrationRequest } from '@/service/backend';
+import { useTranslation } from '@/app/i18n/client';
 
-export default function PreRegistrationCard() {
+export default function PreRegistrationCard({
+  language,
+}: {
+  language: string;
+}) {
   const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation(language, 'pre-registration');
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -28,7 +34,7 @@ export default function PreRegistrationCard() {
     <div className="flex h-[75vh] items-center justify-center bg-gradient-to-r from-[#e6f0ff] to-[#e6f8ff]">
       <div className="mx-auto max-w-md space-y-6 overflow-hidden rounded-xl bg-white p-8 shadow-md md:max-w-2xl">
         <div className="space-y-4 text-center">
-          <h1 className="text-3xl font-bold">Pre Registration</h1>
+          <h1 className="text-3xl font-bold">{t('title')}</h1>
           <p>
             Sign up now to reserve your spot and be the first to access our new
             platform.

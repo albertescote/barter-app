@@ -1,6 +1,12 @@
 import Image from 'next/image';
 
-export default function Home() {
+interface PageParams {
+  params: {
+    lng: string;
+  };
+}
+
+export default function Home({ params: { lng } }: PageParams) {
   return (
     <main>
       <section className="h-[75vh] bg-gradient-to-r from-[#e6f0ff] to-[#e6f8ff] py-12 md:py-20">
