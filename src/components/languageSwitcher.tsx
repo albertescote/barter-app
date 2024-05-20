@@ -1,7 +1,6 @@
 'use client';
-
 import { useTranslation } from '@/app/i18n/client';
-import { useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -15,6 +14,23 @@ export default function LanguageSwitcher({ language }: { language: string }) {
   const { t } = useTranslation(language, 'home');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const dropdownRef: MutableRefObject<any> = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: { target: any }) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const changeLanguage = async (newLanguage: string) => {
     if (newLanguage === language) {
@@ -44,13 +60,11 @@ export default function LanguageSwitcher({ language }: { language: string }) {
       </button>
       {dropdownOpen && (
         <div
+          ref={dropdownRef}
           id="dropdown"
-          className="absolute z-10 mt-1 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+          className="mt-54 absolute right-0 divide-y divide-gray-100 rounded-b-lg bg-[#b4e6ff]"
         >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdownDefaultButton"
-          >
+          <ul className="py-2 text-sm" aria-labelledby="dropdownDefaultButton">
             {SupportedLanguages.map((lang) => (
               <li key={lang.id}>
                 <a

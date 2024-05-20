@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import CustomButton from '@/components/ui/customButton';
+import PreRegisterButton from '@/components/ui/preRegisterButton';
 import LanguageSwitcher from '@/components/languageSwitcher';
-import { useTranslation } from '@/app/i18n';
 
 export default async function Header({ language }: { language: string }) {
-  const { t } = await useTranslation(language, 'home');
   return (
     <header className="relative flex items-center justify-between bg-gradient-to-r from-[#b4c6ff] to-[#b4e6ff] px-6 py-4 text-gray-900">
       <Link className="text-xl font-bold" href="/">
@@ -20,10 +18,7 @@ export default async function Header({ language }: { language: string }) {
         </div>
       </Link>
       <div className="relative flex items-center space-x-6">
-        <CustomButton
-          text={t('preRegister')}
-          navTo={language + '/pre-registration'}
-        ></CustomButton>
+        <PreRegisterButton language={language}></PreRegisterButton>
         <LanguageSwitcher language={language} />
       </div>
     </header>

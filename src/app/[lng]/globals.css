@@ -24,3 +24,7 @@ body {
 .title-text:hover {
   transform: scale(1.2);
 }
+
+.mt-54 {
+  margin-top: 13.5rem;
+}
