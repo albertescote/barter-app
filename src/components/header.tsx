@@ -7,9 +7,9 @@ export default function Header(){
         <header
             className="relative flex items-center justify-between bg-gradient-to-r from-[#b4c6ff] to-[#b4e6ff] px-6 py-4 text-gray-900">
             <Link className="text-xl font-bold" href="/">
-                <div className='relative flex items-center space-x-4'>
+                <div className='relative flex items-center space-x-4 text-[#220c10]'>
                     <Image src='/icon.png' alt='icon' height='60' width='60'></Image>
-                    Trisbar
+                    <span className="title-text">Trisbar</span>
                 </div>
             </Link>
             <CustomButton text='Pre Register' navTo='/pre-registration'></CustomButton>
