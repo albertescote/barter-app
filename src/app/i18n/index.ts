@@ -25,7 +25,6 @@ export async function useTranslation(
   options: { keyPrefix?: string } = {},
 ) {
   const i18nextInstance = await initI18next(lng, ns);
-  console.log(i18nextInstance.getResourceBundle('en', 'home'));
   return {
     t: i18nextInstance.getFixedT(
       lng,

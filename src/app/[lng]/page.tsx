@@ -28,7 +28,7 @@ export default function Home({ params: { lng } }: PageParams) {
                 alt="Barter Concept"
                 className="w-full rounded-lg object-cover"
                 height="400"
-                src="/main-barter.jpg"
+                src="/assets/main-barter.jpg"
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
