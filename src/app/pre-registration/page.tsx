@@ -1,7 +1,5 @@
-import PreRegistrationCard from "@/components/preRegistrationCard";
+import PreRegistrationCard from '@/components/preRegistrationCard';
 
 export default function Page() {
-  return (
-      <PreRegistrationCard></PreRegistrationCard>
-  );
+  return <PreRegistrationCard></PreRegistrationCard>;
 }
