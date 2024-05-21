@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PreRegisterButton from '@/components/ui/preRegisterButton';
-import LanguageSwitcher from '@/components/languageSwitcher';
 
 export default async function Header({ language }: { language: string }) {
   return (
@@ -17,10 +16,7 @@ export default async function Header({ language }: { language: string }) {
           <span className="title-text">Trisbar</span>
         </div>
       </Link>
-      <div className="relative flex items-center space-x-6">
-        <PreRegisterButton language={language}></PreRegisterButton>
-        <LanguageSwitcher language={language} />
-      </div>
+      <PreRegisterButton language={language}></PreRegisterButton>
     </header>
   );
 }

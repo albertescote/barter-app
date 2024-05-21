@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header language={lng}></Header>
         {children}
-        <Footer></Footer>
+        <Footer language={lng}></Footer>
       </body>
     </html>
   );

@@ -1,10 +1,13 @@
-export default function Footer() {
+import LanguageSwitcher from '@/components/languageSwitcher';
+import { useTranslation } from '@/app/i18n';
+
+export default async function Footer({ language }: { language: string }) {
+  const { t } = await useTranslation(language, 'home');
   return (
     <footer className="bg-gradient-to-r from-[#b4c6ff] to-[#b4e6ff] py-8">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center text-sm">
-          © 2024 Trisbar. All rights reserved.
-        </div>
+      <div className="mx-4 flex items-center justify-center">
+        {t('rights')}
+        <LanguageSwitcher language={language}></LanguageSwitcher>
       </div>
     </footer>
   );

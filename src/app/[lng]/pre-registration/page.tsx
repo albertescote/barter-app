@@ -7,5 +7,9 @@ interface PageParams {
 }
 
 export default function Page({ params: { lng } }: PageParams) {
-  return <PreRegistrationCard language={lng}></PreRegistrationCard>;
+  return (
+    <div className="flex h-[75vh] items-center justify-center bg-gradient-to-r from-[#e6f0ff] to-[#e6f8ff]">
+      <PreRegistrationCard language={lng}></PreRegistrationCard>
+    </div>
+  );
 }

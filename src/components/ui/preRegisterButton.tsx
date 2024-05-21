@@ -6,12 +6,12 @@ const PreRegisterButton = ({ language }: { language: string }) => {
   const { t } = useTranslation(language, 'home');
   const router = useRouter();
   const navigate = () => {
-    router.push(language + '/pre-registration');
+    router.push('/pre-registration');
   };
   return (
     <button onClick={navigate}>
       <div className="rounded-full border border-gray-100 px-4 py-2 font-bold text-[#23395b] hover:bg-gray-100">
-        {t('pre-register')}
+        {t('sign-up')}
       </div>
     </button>
   );
