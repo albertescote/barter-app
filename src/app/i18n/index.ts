@@ -8,11 +8,8 @@ const initI18next = async (lng: string, ns?: string | string[]) => {
   await i18nInstance
     .use(initReactI18next)
     .use(
-      resourcesToBackend(async (language: any, namespace: any) => {
-        const { default: data } = await import(
-          `./locales/${language}/${namespace}.json`
-        );
-        return { [namespace]: data };
+      resourcesToBackend((language: any, namespace: any) => {
+        return import(`./locales/${language}/${namespace}.json`);
       }),
     )
     .init(getOptions(lng, Array.isArray(ns) ? ns[0] : ns));
@@ -24,13 +21,18 @@ export async function useTranslation(
   ns?: string | string[],
   options: { keyPrefix?: string } = {},
 ) {
-  const i18nextInstance = await initI18next(lng, ns);
-  return {
-    t: i18nextInstance.getFixedT(
-      lng,
-      Array.isArray(ns) ? ns[0] : ns,
-      options.keyPrefix,
-    ),
-    i18n: i18nextInstance,
-  };
+  try {
+    const i18nextInstance = await initI18next(lng, ns);
+    return {
+      t: i18nextInstance.getFixedT(
+        lng,
+        Array.isArray(ns) ? ns[0] : ns,
+        options.keyPrefix,
+      ),
+      i18n: i18nextInstance,
+    };
+  } catch (error) {
+    console.error('Error initializing i18next:', error);
+    throw error;
+  }
 }

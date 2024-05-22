@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ language }: { language: string }) {
   };
 
   return (
-    <div className="relative flex items-center space-x-4">
+    <div className="flex items-center space-x-4">
       {SupportedLanguages.map((lang) => (
         <button
           key={lang.id}
